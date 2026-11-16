@@ -3,17 +3,6 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 class SlotMachine extends StatefulWidget {
-  void _reset() {
-    setState(() {
-      _coins = 10;
-      _slot1 = _cherry;
-      _slot2 = _lemon;
-      _slot3 = _seven;
-      _message = '';
-    });
-}
-
-
   const SlotMachine({super.key});
 
   @override
@@ -23,8 +12,7 @@ class SlotMachine extends StatefulWidget {
 
 class _SlotMachineState
     extends State<SlotMachine> {
-  static const _cherry =
-      'assets/images/cherry.png';
+  static const _cherry = 'assets/images/cherry.png';
   static const _lemon = 'assets/images/lemon.png';
   static const _seven = 'assets/images/seven.png';
   static const _symbols = [
@@ -76,6 +64,19 @@ class _SlotMachineState
     });
   }
 
+  void _reset() {
+    setState(() {
+      _coins = 10;
+      _slot1 = _cherry;
+      _slot2 = _lemon;
+      _slot3 = _seven;
+      _message = '';
+    });
+  }
+
+
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -143,6 +144,17 @@ class _SlotMachineState
             ),
           ),
         ),
+        const SizedBox(height: 12),
+        TextButton(
+          onPressed: _reset,
+          child: const Text(
+            'Начать заново',
+            style: TextStyle(
+              color: Colors.white70,
+              fontSize: 16,
+            ), 
+          ), 
+        ), 
       ],
     );
   }
